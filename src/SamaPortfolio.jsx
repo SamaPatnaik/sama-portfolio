@@ -48,9 +48,11 @@ const projects = [
     desc: "A UBC bus-bay planner that tests whether sending a scheduled bus to a quieter bay would cut waiting.",
     stack: ["Databricks"],
     links: [
-      { label: "Live app", href: "" },
+      { label: "Live app", href: "https://termsync-ubc.netlify.app/" },
+      { label: "EDA", href: "https://termsync-ubc.netlify.app/eda" },
+      { label: "Dashboard", href: "https://termsync-ubc.netlify.app/dashboard" },
+      { label: "Slides", href: "https://drive.google.com/file/d/18YxIjykxGpB_2NZl4qKN_GZjQ6YlKptz/view" },
       { label: "GitHub", href: "" },
-      { label: "EDA & slides", href: "https://drive.google.com/file/d/18YxIjykxGpB_2NZl4qKN_GZjQ6YlKptz/view" },
     ],
   },
   {
