@@ -324,9 +324,8 @@ function primaryLink(p) {
 function ProjectCover({ p, primary }) {
   const inner = (
     <>
-      {p.image
-        ? <><img className="sp-cover-img" src={p.image} alt="" loading="lazy" /><div className="sp-cover-shade" /></>
-        : <div className="grid-bg" />}
+      {p.image && <><img className="sp-cover-img" src={p.image} alt="" loading="lazy" /><div className="sp-cover-shade" /></>}
+      <div className="grid-bg" />
       {p.badge && <span className="sp-badge">{p.badge}</span>}
       <span className="stat sp-cover-tag">{p.tag}</span>
       <span className="big">{p.title}</span>
