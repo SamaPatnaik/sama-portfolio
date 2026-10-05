@@ -156,6 +156,18 @@
 }
 .sp-proj:hover .sp-proj-cover .big { transform: translateY(-6px); }
 .sp-proj-cover .stat { font-size: 12px; font-weight: 500; opacity: .9; }
+.sp-cover-foot { position: relative; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.sp-cover-cta {
+  flex: none; background: #fff; color: var(--blue); font-size: 11px; font-weight: 700;
+  padding: 4px 8px; transition: transform .2s;
+}
+.sp-proj:nth-child(even) .sp-cover-cta { color: var(--red); }
+/* clickable cover: lifts with a hard shadow in the opposite colour */
+.sp-proj-cover.is-link { color: #fff; transition: transform .2s, box-shadow .2s; }
+.sp-proj-cover.is-link:hover { transform: translate(-4px, -4px); box-shadow: 8px 8px 0 var(--red); }
+.sp-proj:nth-child(even) .sp-proj-cover.is-link:hover { box-shadow: 8px 8px 0 var(--blue); }
+.sp-proj-cover.is-link:hover .sp-cover-cta { transform: translateX(-3px); }
+.sp-proj-cover.is-link:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 .sp-proj-cover .grid-bg {
   position: absolute; inset: 0; opacity: .14; pointer-events: none;
   background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);

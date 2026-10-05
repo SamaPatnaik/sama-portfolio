@@ -306,6 +306,39 @@ function About() {
   );
 }
 
+// The big cover opens the live demo; projects without one fall back to their first link.
+const DEMO_LABELS = ["Live app", "Open"];
+function primaryLink(p) {
+  const live = p.links.filter(l => l.href);
+  return live.find(l => DEMO_LABELS.includes(l.label)) || live[0] || null;
+}
+
+function ProjectCover({ p, primary }) {
+  const inner = (
+    <>
+      <div className="grid-bg" />
+      {p.badge && <span className="sp-badge">{p.badge}</span>}
+      <span className="stat">{p.tag}</span>
+      <span className="big">{p.title}</span>
+      <span className="sp-cover-foot">
+        <span className="stat">{p.stat}</span>
+        {primary && (
+          <span className="sp-cover-cta">
+            {DEMO_LABELS.includes(primary.label) ? "Live demo" : primary.label} ↗
+          </span>
+        )}
+      </span>
+    </>
+  );
+  if (!primary) return <div className="sp-proj-cover">{inner}</div>;
+  return (
+    <a className="sp-proj-cover is-link" href={primary.href} target="_blank" rel="noopener noreferrer"
+      aria-label={`${p.title}: open ${DEMO_LABELS.includes(primary.label) ? "live demo" : primary.label}`}>
+      {inner}
+    </a>
+  );
+}
+
 function Work() {
   const [filter, setFilter] = useState("All");
   const shown = filter === "All" ? projects : projects.filter(p => p.cats.includes(filter));
@@ -319,30 +352,28 @@ function Work() {
         ))}
       </div>
       <div className="sp-work">
-        {shown.map(p => (
-          <article key={p.title} className="sp-proj sp-enter">
-            <div className="sp-proj-cover">
-              <div className="grid-bg" />
-              {p.badge && <span className="sp-badge">{p.badge}</span>}
-              <span className="stat">{p.tag}</span>
-              <span className="big">{p.title}</span>
-              <span className="stat">{p.stat}</span>
-            </div>
-            <div className="sp-proj-meta">
-              <span>{p.title}</span>
-              <span>{p.tag}</span>
-            </div>
-            <p className="sp-proj-desc">{p.desc}</p>
-            {p.stack.length > 0 && <div className="sp-stack">{p.stack.map(s => <span key={s}>{s}</span>)}</div>}
-            {p.links.some(l => l.href) && (
-              <div className="sp-links">
-                {p.links.filter(l => l.href).map(l => (
-                  <a key={l.label} className="sp-link" href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
-                ))}
+        {shown.map(p => {
+          const primary = primaryLink(p);
+          const secondary = p.links.filter(l => l.href && l !== primary);
+          return (
+            <article key={p.title} className="sp-proj sp-enter">
+              <ProjectCover p={p} primary={primary} />
+              <div className="sp-proj-meta">
+                <span>{p.title}</span>
+                <span>{p.tag}</span>
               </div>
-            )}
-          </article>
-        ))}
+              <p className="sp-proj-desc">{p.desc}</p>
+              {p.stack.length > 0 && <div className="sp-stack">{p.stack.map(s => <span key={s}>{s}</span>)}</div>}
+              {secondary.length > 0 && (
+                <div className="sp-links">
+                  {secondary.map(l => (
+                    <a key={l.label} className="sp-link" href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+                  ))}
+                </div>
+              )}
+            </article>
+          );
+        })}
       </div>
     </main>
   );
