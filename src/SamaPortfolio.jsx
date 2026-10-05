@@ -1,5 +1,9 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import "./SamaPortfolio.css";
+import shotHeat from "./assets/projects/heat-forecast.webp";
+import shotTermSync from "./assets/projects/termsync.webp";
+import shotEnrolment from "./assets/projects/enrolment.webp";
+import shotUrbanOceans from "./assets/projects/urban-oceans.webp";
 
 const EMAIL = "samapatnaik22@gmail.com";
 const IMG = `${process.env.PUBLIC_URL}/images`;
@@ -30,6 +34,7 @@ const projects = [
     cats: ["Machine Learning"],
     tag: "Forecasting",
     title: "Canada Extreme Heat Forecast",
+    image: shotHeat,
     stat: "Flagged the 2021 BC heat dome at 97%",
     badge: "Featured",
     desc: "Forecasts extreme heat risk 1–3 days ahead at Canadian weather stations from 150 years of climate data, and flagged the 2021 BC heat dome at 97% the day before.",
@@ -43,6 +48,7 @@ const projects = [
     cats: ["Hackathons"],
     tag: "Databricks × Rogers Datathon",
     title: "TermSync",
+    image: shotTermSync,
     stat: "UBC bus-bay planner",
     badge: "Featured",
     desc: "A UBC bus-bay planner that tests whether sending a scheduled bus to a quieter bay would cut waiting.",
@@ -79,6 +85,7 @@ const projects = [
     cats: ["Dashboards"],
     tag: "R Shiny",
     title: "UBC Graduate Enrolment Dashboard",
+    image: shotEnrolment,
     stat: "Program · year · demographics",
     desc: "Explore enrolment by program, year and demographics.",
     stack: ["R Shiny"],
@@ -88,6 +95,7 @@ const projects = [
     cats: ["Dashboards"],
     tag: "R Shiny",
     title: "Urban Oceans",
+    image: shotUrbanOceans,
     stat: "20+ Vancouver regions",
     desc: "Phytoplankton, temperature and salinity across 20+ Vancouver regions, built for the Pelagic Ecosystems Lab.",
     stack: ["R Shiny"],
@@ -316,9 +324,11 @@ function primaryLink(p) {
 function ProjectCover({ p, primary }) {
   const inner = (
     <>
-      <div className="grid-bg" />
+      {p.image
+        ? <><img className="sp-cover-img" src={p.image} alt="" loading="lazy" /><div className="sp-cover-shade" /></>
+        : <div className="grid-bg" />}
       {p.badge && <span className="sp-badge">{p.badge}</span>}
-      <span className="stat">{p.tag}</span>
+      <span className="stat sp-cover-tag">{p.tag}</span>
       <span className="big">{p.title}</span>
       <span className="sp-cover-foot">
         <span className="stat">{p.stat}</span>
@@ -330,9 +340,10 @@ function ProjectCover({ p, primary }) {
       </span>
     </>
   );
-  if (!primary) return <div className="sp-proj-cover">{inner}</div>;
+  const cls = `sp-proj-cover${p.image ? " has-img" : ""}`;
+  if (!primary) return <div className={cls}>{inner}</div>;
   return (
-    <a className="sp-proj-cover is-link" href={primary.href} target="_blank" rel="noopener noreferrer"
+    <a className={`${cls} is-link`} href={primary.href} target="_blank" rel="noopener noreferrer"
       aria-label={`${p.title}: open ${DEMO_LABELS.includes(primary.label) ? "live demo" : primary.label}`}>
       {inner}
     </a>
