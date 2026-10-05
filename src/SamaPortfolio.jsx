@@ -35,7 +35,6 @@ const projects = [
     tag: "Forecasting",
     title: "Canada Extreme Heat Forecast",
     image: shotHeat,
-    stat: "Flagged the 2021 BC heat dome at 97%",
     badge: "Featured",
     desc: "Forecasts extreme heat risk 1–3 days ahead at Canadian weather stations from 150 years of climate data, and flagged the 2021 BC heat dome at 97% the day before.",
     stack: [],
@@ -49,7 +48,6 @@ const projects = [
     tag: "Databricks × Rogers Datathon",
     title: "TermSync",
     image: shotTermSync,
-    stat: "UBC bus-bay planner",
     badge: "Featured",
     desc: "A UBC bus-bay planner that tests whether sending a scheduled bus to a quieter bay would cut waiting.",
     stack: ["Databricks"],
@@ -65,7 +63,6 @@ const projects = [
     cats: ["Machine Learning", "In Progress"],
     tag: "MLOps",
     title: "Patient Drift",
-    stat: "~101k encounters",
     badge: "In progress",
     desc: "Predicts 30-day hospital readmission (~101k encounters) in an AWS MLOps pipeline that detects population shift and retrains itself.",
     stack: ["AWS", "MLOps"],
@@ -75,7 +72,6 @@ const projects = [
     cats: ["In Progress"],
     tag: "Climate Risk",
     title: "Climate Risk Stress Testing",
-    stat: "OSFI B-15 · NGFS",
     badge: "In progress",
     desc: "Estimates expected loss on a loan portfolio under climate scenarios, framed on OSFI B-15 and NGFS.",
     stack: [],
@@ -86,7 +82,6 @@ const projects = [
     tag: "R Shiny",
     title: "UBC Graduate Enrolment Dashboard",
     image: shotEnrolment,
-    stat: "Program · year · demographics",
     desc: "Explore enrolment by program, year and demographics.",
     stack: ["R Shiny"],
     links: [{ label: "Open", href: "https://myapps1234.shinyapps.io/Enrollment-app/" }],
@@ -96,7 +91,6 @@ const projects = [
     tag: "R Shiny",
     title: "Urban Oceans",
     image: shotUrbanOceans,
-    stat: "20+ Vancouver regions",
     desc: "Phytoplankton, temperature and salinity across 20+ Vancouver regions, built for the Pelagic Ecosystems Lab.",
     stack: ["R Shiny"],
     links: [{ label: "Open", href: "https://myapps1234.shinyapps.io/PelagicUO/" }],
@@ -105,7 +99,6 @@ const projects = [
     cats: ["Machine Learning"],
     tag: "Regression",
     title: "Pricing Budapest",
-    stat: "Two-night Airbnb stays",
     desc: "Predicts the price of a two-night Airbnb stay in Budapest.",
     stack: ["R", "LASSO", "OLS"],
     links: [{ label: "GitHub", href: "https://github.com/SamaPatnaik/STAT301-GroupProject" }],
@@ -114,7 +107,6 @@ const projects = [
     cats: ["Dashboards"],
     tag: "Tableau",
     title: "British Airways Reviews",
-    stat: "Customer review dashboard",
     desc: "An interactive dashboard of British Airways customer reviews.",
     stack: ["Tableau"],
     links: [{ label: "Open", href: "https://public.tableau.com/app/profile/sama.patnaik/viz/dashboard_17482246850980/Dashboard1" }],
@@ -123,7 +115,6 @@ const projects = [
     cats: ["Dashboards", "Hackathons"],
     tag: "BOLT UBC First Byte 2025",
     title: "Vancouver City FC Case Study",
-    stat: "Revenue growth plan",
     desc: "A revenue growth plan for a soccer club, built for BOLT UBC First Byte 2025.",
     stack: ["Power BI"],
     links: [{ label: "GitHub", href: "https://github.com/ONIGIRIIII/Vancouver-City-FC-Case-Study" }],
@@ -132,7 +123,6 @@ const projects = [
     cats: ["Hackathons"],
     tag: "Computer Vision",
     title: "SquatSense",
-    stat: "Real-time form feedback",
     desc: "Real-time feedback on squat form using computer vision.",
     stack: ["OpenCV", "Python"],
     links: [{ label: "Devpost", href: "https://devpost.com/software/squatsense-ai-personal-trainer" }],
@@ -141,7 +131,6 @@ const projects = [
     cats: ["Machine Learning", "Hackathons"],
     tag: "WaffleHacks",
     title: "We'llChat",
-    stat: "RAG-powered matching",
     desc: "A chatbot that matches students with health professionals and peers, built with Priyadarshan and Akshaya.",
     stack: ["React", "RAG"],
     links: [{ label: "Devpost", href: "https://devpost.com/software/we-llchat" }, { label: "GitHub", href: "" }],
@@ -330,7 +319,6 @@ function ProjectCover({ p, primary }) {
       <span className="stat sp-cover-tag">{p.tag}</span>
       <span className="big">{p.title}</span>
       <span className="sp-cover-foot">
-        <span className="stat">{p.stat}</span>
         {primary && (
           <span className="sp-cover-cta">
             {DEMO_LABELS.includes(primary.label) ? "Live demo" : primary.label} ↗
