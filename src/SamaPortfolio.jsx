@@ -24,8 +24,11 @@ const services = [
 ];
 
 const tools = [
-  "Python", "R", "SQL", "JavaScript", "HTML/CSS", "Tableau", "R Shiny", "Power BI",
-  "XGBoost", "Optuna", "RAG / LLMs", "React", "Flask", "Git", "AWS", "Databricks", "Excel",
+  "Python", "R", "SQL", "JavaScript",
+  "pandas", "NumPy", "scikit-learn", "XGBoost", "Optuna", "RAG / LLMs",
+  "PostgreSQL", "DuckDB", "Databricks", "Docker", "FastAPI", "AWS",
+  "Power BI", "Tableau", "R Shiny", "Streamlit", "Excel",
+  "Git", "Linux",
 ];
 
 // badge: "Featured" | "In progress". Links with an empty href are hidden until filled in.
@@ -144,6 +147,11 @@ const experience = [
     role: "Data & Tool Developer Co-op",
     period: "May – Aug 2026",
     desc: "Built FIFAFx, a Python GUI that automates data parsing, Excel reports and slides for FIFA World Cup 2026 forecasts. Built Python ETL over 10 years of air-quality bulletins for Power BI verification dashboards. Cut manual errors by 40%.",
+    points: [
+      "FIFAfx: a Python app that builds FIFA World Cup 2026 venue weather briefings end to end (model data → Excel → charts → PowerPoint). Cut prep from 45–60 min to under 10; used in production during the Vancouver matches.",
+      "Point Forecast Tool: a Python pipeline that ingests GRIB2 model output (HRDPS/RDPS/GDPS) into a Parquet/DuckDB store, with Excel export and automated charts for forecasters.",
+      "Power BI alerts verification dashboard and a 10-year ozone bulletin analysis (scraping + regex classification).",
+    ],
   },
   {
     org: "UBC Graduate School",
@@ -286,6 +294,11 @@ function About() {
             <span className="sp-row-role">{e.role}</span>
             <span className="sp-row-period">{e.period}</span>
             <span className="sp-row-desc">{e.desc}</span>
+            {e.points && (
+              <ul className="sp-row-points">
+                {e.points.map(pt => <li key={pt}>{pt}</li>)}
+              </ul>
+            )}
           </div>
         ))}
       </div>

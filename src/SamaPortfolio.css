@@ -128,6 +128,8 @@
 .sp-row-role { text-align: center; }
 .sp-row-period { text-align: right; }
 .sp-row-desc { grid-column: 1 / -1; color: var(--muted); line-height: 1.5; }
+.sp-row-points { grid-column: 1 / -1; margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.5; }
+.sp-row-points li + li { margin-top: 6px; }
 
 .sp-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .sp-card { background: var(--blue); color: #fff; padding: 22px 24px 28px; min-height: 180px; }
